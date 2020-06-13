@@ -114,6 +114,20 @@
       <path value="$PROJECT_DIR$/vendor/seld/jsonlint" />
       <path value="$PROJECT_DIR$/vendor/beyondcode/laravel-dump-server" />
       <path value="$PROJECT_DIR$/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/vendor/moontoast/math" />
+      <path value="$PROJECT_DIR$/vendor/laravel/telescope" />
+      <path value="$PROJECT_DIR$/vendor/phpseclib/bcmath_compat" />
+      <path value="$PROJECT_DIR$/vendor/itsgoingd/clockwork" />
+      <path value="$PROJECT_DIR$/vendor/orangehill/iseed" />
+      <path value="$PROJECT_DIR$/vendor/sven/artisan-view" />
+      <path value="$PROJECT_DIR$/vendor/alicfeng/identity-card" />
+      <path value="$PROJECT_DIR$/vendor/nyg/holiday" />
+      <path value="$PROJECT_DIR$/vendor/pda/pheanstalk" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/vendor/maennchen/zipstream-php" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
