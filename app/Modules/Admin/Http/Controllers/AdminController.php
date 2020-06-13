@@ -4,13 +4,17 @@ namespace App\Modules\Admin\Http\Controllers;
 
 use App\Modules\Model\Admin;
 use App\Modules\Model\File;
+use App\Modules\Model\Menu;
 use App\Modules\Model\Role;
+use App\Modules\Model\RoleMenu;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
     public function index(){
+
+        dd(auth()->user());exit;
         $menu=session('menu')??[];
         return view('admin::index.index',['menu'=>$menu]);
     }
@@ -126,5 +130,48 @@ class AdminController extends Controller
         }else{
             return $this->error();
         }
+    }
+
+
+    /**
+     * 登录
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @author 牛永光 nyg1991@aliyun.com
+     * @date 2019/9/6 16:03
+     */
+    public function login(Request $request)
+    {
+        $name = $request->input('adminName');
+        $password = $request->input('password');
+        $user = Admin::where('name', $name)->first();
+        if (!$user) {
+            return $this->error('账号不存在！');
+        }
+        if ($password != decrypt($user->password)) {
+            return $this->error('账号密码错误！');
+        }
+        if ($user->status == 0) {
+            return $this->error('帐号未启用！');
+        }
+        auth('web')->login($user);
+        $menu_ids = RoleMenu::where(['role_id' => $user->role_id])->pluck('menu_id')->toArray();
+        $urls = Menu::whereIn('id', $menu_ids)->pluck('url')->toArray();
+        $menu = MenuService::getMenu(0, $menu_ids);
+        session(['menu' => $menu, 'user' => $user->toArray(), 'menu_ids' => $menu_ids, 'urls' => $urls]);
+        return $this->success('登录成功！');
+    }
+
+    /**
+     * 退出
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @author 牛永光 nyg1991@aliyun.com
+     * @date 2019/9/6 16:03
+     */
+    public function logout(Request $request)
+    {
+        \Auth::logout();
+        return redirect('login');
     }
 }

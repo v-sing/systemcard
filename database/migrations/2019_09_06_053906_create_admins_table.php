@@ -17,11 +17,11 @@ class CreateAdminsTable extends Migration
 
             $table->bigIncrements('id');
             $table->string('name', 20);
-            $table->string('email', 100)->default('')->comment('邮箱');
-            $table->tinyInteger('status')->default(1)->comment('是否启用');
+            $table->string('email', 100)->nullable()->default('')->comment('邮箱');
+            $table->tinyInteger('status')->nullable()->default(1)->comment('是否启用');
             $table->tinyInteger('role_id')->comment('所属角色');
             $table->string('password', 300);
-            $table->string('true_name')->default('')->comment('真实姓名');
+            $table->string('true_name')->default('')->nullable()->comment('真实姓名');
             $table->timestamps();
             $table->softDeletes();
             $table->rememberToken();
