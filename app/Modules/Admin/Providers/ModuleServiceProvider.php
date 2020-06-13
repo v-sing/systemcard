@@ -3,6 +3,7 @@
 namespace App\Modules\Admin\Providers;
 
 use Caffeinated\Modules\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 
 class ModuleServiceProvider extends ServiceProvider
 {
@@ -13,6 +14,7 @@ class ModuleServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Paginator::defaultView('vendor.pagination.layui');//定义layui分页方式
         $this->loadTranslationsFrom(module_path('admin', 'Resources/Lang', 'app'), 'admin');
         $this->loadViewsFrom(module_path('admin', 'Resources/Views', 'app'), 'admin');
         $this->loadMigrationsFrom(module_path('admin', 'Database/Migrations', 'app'));

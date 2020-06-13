@@ -12,7 +12,10 @@
 */
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('/', function () {
-        dd('This is the admin module index page. Build something great!');
-    });
+//    Route::get('/', function () {
+//        dd('This is the admin module index page. Build something great!');
+//    });
+    Route::get('/admin/welcome', 'AdminController@welcome');
+    Route::get('/', 'AdminController@index');
+
 });

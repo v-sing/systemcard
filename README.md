@@ -71,7 +71,7 @@ C、其他
 > composer dump-autoload
 
 3,创建模型和迁移
-> php artisan make:model Model/模型名 -m
+> php artisan make:model Modules/Model/模型名 -m
 
 4,拉取代码后，安装扩展
 > composer install
